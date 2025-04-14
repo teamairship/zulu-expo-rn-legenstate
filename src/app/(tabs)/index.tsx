@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { Memo, observer, use$, useObservable } from '@legendapp/state/react';
 import { todoStore$ } from '../../stores/todoStore';
-import { CustomButton } from '~/components/CustomButton';
+import { CustomButton } from '~/src/components/CustomButton';
 
 // TODO: Start bringing the component over from Zulu
 export default function HomeScreen() {
