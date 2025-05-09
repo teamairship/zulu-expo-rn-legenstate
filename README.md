@@ -5,7 +5,7 @@ ERD
 title: Zulu Entity Relation Diagram
 ---
 erDiagram
-    USER ||--|{ PROJECT : has
+    USER ||--|{ PROJECT : assigned
     PROJECT ||--|{ ACTIVITY : contains
     USER }|--|{ TIME-ENTRY : has
     TIME-ENTRY }|--|{ PROJECT : contains

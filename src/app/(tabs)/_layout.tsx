@@ -1,7 +1,16 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { use$ } from '@legendapp/state/react';
 import { Tabs } from 'expo-router';
+import { userStore$ } from '~/src/stores/userStore';
 
 export default function TabLayout() {
+  // Check if user is logged in
+  // const isLoggedIn = use$(userStore$.isLoggedIn);
+  // No? Render the auth form
+  // if (!isLoggedIn) {
+
+  // }
+  // Yes?  render tabs
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
       <Tabs.Screen

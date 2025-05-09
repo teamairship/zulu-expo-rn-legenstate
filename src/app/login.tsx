@@ -1,41 +1,26 @@
+import { use$ } from '@legendapp/state/react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { Memo, observer, use$, useObservable } from '@legendapp/state/react';
-import { todoStore$ } from '../../stores/todoStore';
-import { CustomButton } from '~/src/components/CustomButton';
-import { InputText } from '~/src/components/InputText';
-import { MyButton } from '~/src/components/Button';
+import { userStore$ } from '../stores/userStore';
+import { InputText } from '../components/InputText';
 import { useForm } from '@tanstack/react-form';
-import { userStore$ } from '~/src/stores/userStore';
 
-// TODO: Start bringing the component over from Zulu
-export default function HomeScreen() {
-  const total = use$(todoStore$.total);
+export default function LoginScreen() {
+  const setUser = use$(userStore$.setUser);
   const form = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
+      name: '',
+      redmineKey: '',
     },
     onSubmit: async ({ value }) => {
       // Do something with form data
       console.log(value);
+      setUser(value);
     },
   });
 
   return (
     <View style={styles.container}>
-      <Button title="Logout" onPress={() => userStore$.reset()} />
-      <Text>
-        Total: <Memo>{total}</Memo>
-      </Text>
-      <Button title="Add Todo" onPress={() => todoStore$.addTodo()} />
-      <Button title="Clear" onPress={() => todoStore$.todos.set([])} />
-      <Text className="text-primary-500">Time Entries</Text>
-      <View className="w-[30px] h-[30px] bg-secondary-300"></View>
-      <CustomButton title="Custom Button" />
-      <MyButton>Primary</MyButton>
-      <MyButton variant="destructive">Destructive</MyButton>
-      <MyButton variant="outline">outline</MyButton>
-
+      <Text className="font-bold text-2xl">Login Screen</Text>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -43,10 +28,10 @@ export default function HomeScreen() {
           void form.handleSubmit();
         }}
       >
-        <form.Field name="firstName">
+        <form.Field name="name">
           {(field) => (
             <>
-              <Text>First Name</Text>
+              <Text>Name</Text>
               <InputText
                 value={field.state.value}
                 onChangeText={field.handleChange}
@@ -58,10 +43,10 @@ export default function HomeScreen() {
             </>
           )}
         </form.Field>
-        <form.Field name="lastName">
+        <form.Field name="redmineKey">
           {(field) => (
             <>
-              <Text>Last Name</Text>
+              <Text>Redmine Key</Text>
               <InputText
                 value={field.state.value}
                 onChangeText={field.handleChange}
