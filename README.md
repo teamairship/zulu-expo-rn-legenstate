@@ -1,4 +1,4 @@
-ERD
+# ERD
 
 ```mermaid
 ---
@@ -22,7 +22,7 @@ erDiagram
     }
 
     ACTIVITY {
-      uuid id pk 
+      uuid id pk
       string name
       uuid project_key fk
     }
@@ -32,14 +32,14 @@ erDiagram
       string redmine_key fk
       uuid project_id fk
       uuid activity_id fk
-      string note 
+      string note
       number hours
       timestamp start_time
     }
 ```
 
-#FLOW
+# FLOW
 
 ```mermaid
-  
+
 ```

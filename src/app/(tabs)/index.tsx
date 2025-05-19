@@ -1,19 +1,18 @@
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { Memo, observer, use$, useObservable } from '@legendapp/state/react';
-import { todoStore$ } from '../../stores/todoStore';
-import { CustomButton } from '~/src/components/CustomButton';
-import { InputText } from '~/src/components/InputText';
-import { MyButton } from '~/src/components/Button';
-import { useForm } from '@tanstack/react-form';
-import { userStore$ } from '~/src/stores/userStore';
+import { View, Text, StyleSheet, Button } from "react-native";
+import { Memo, observer, use$, useObservable } from "@legendapp/state/react";
+
+import { CustomButton } from "~/src/components/CustomButton";
+import { InputText } from "~/src/components/InputText";
+import { MyButton } from "~/src/components/Button";
+import { useForm } from "@tanstack/react-form";
+import { userStore$ } from "~/src/stores/userStore";
 
 // TODO: Start bringing the component over from Zulu
 export default function HomeScreen() {
-  const total = use$(todoStore$.total);
   const form = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
+      firstName: "",
+      lastName: "",
     },
     onSubmit: async ({ value }) => {
       // Do something with form data
@@ -24,11 +23,6 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Button title="Logout" onPress={() => userStore$.reset()} />
-      <Text>
-        Total: <Memo>{total}</Memo>
-      </Text>
-      <Button title="Add Todo" onPress={() => todoStore$.addTodo()} />
-      <Button title="Clear" onPress={() => todoStore$.todos.set([])} />
       <Text className="text-primary-500">Time Entries</Text>
       <View className="w-[30px] h-[30px] bg-secondary-300"></View>
       <CustomButton title="Custom Button" />
@@ -53,7 +47,7 @@ export default function HomeScreen() {
                 name={field.name}
               />
               {field.state.meta.errors ? (
-                <Text>{field.state.meta.errors.join(', ')}</Text>
+                <Text>{field.state.meta.errors.join(", ")}</Text>
               ) : null}
             </>
           )}
@@ -68,7 +62,7 @@ export default function HomeScreen() {
                 name={field.name}
               />
               {field.state.meta.errors ? (
-                <Text>{field.state.meta.errors.join(', ')}</Text>
+                <Text>{field.state.meta.errors.join(", ")}</Text>
               ) : null}
             </>
           )}
@@ -79,7 +73,7 @@ export default function HomeScreen() {
             <Button
               disabled={!canSubmit}
               onPress={form.handleSubmit}
-              title={isSubmitting ? '...' : 'Submit'}
+              title={isSubmitting ? "..." : "Submit"}
             />
           )}
         />
@@ -91,7 +85,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
