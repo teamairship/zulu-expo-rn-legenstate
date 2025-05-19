@@ -1,45 +1,16 @@
-# ERD
+# Starter base
 
-```mermaid
----
-title: Zulu Entity Relation Diagram
----
-erDiagram
-    USER ||--|{ PROJECT : assigned
-    PROJECT ||--|{ ACTIVITY : contains
-    USER }|--|{ TIME-ENTRY : has
-    TIME-ENTRY }|--|{ PROJECT : contains
+A starting point to help you set up your project quickly and use the common components provided by `react-native-reusables`. The idea is to make it easier for you to get started.
 
-    USER {
-      uuid id pk
-      string redmine_key uk
-      string name
-    }
+## Features
 
-    PROJECT {
-      uuid id pk
-      string name
-    }
+- NativeWind v4
+- Dark and light mode
+  - Android Navigation Bar matches mode
+  - Persistent mode
+- Common components
+  - ThemeToggle, Avatar, Button, Card, Progress, Text, Tooltip
 
-    ACTIVITY {
-      uuid id pk
-      string name
-      uuid project_key fk
-    }
-
-    TIME-ENTRY {
-      uuid id pk
-      string redmine_key fk
-      uuid project_id fk
-      uuid activity_id fk
-      string note
-      number hours
-      timestamp start_time
-    }
-```
-
-# FLOW
-
-```mermaid
-
-```
+<img src="https://github.com/mrzachnugent/react-native-reusables/assets/63797719/42c94108-38a7-498b-9c70-18640420f1bc"
+     alt="starter-base-template"
+     style="width:270px;" />

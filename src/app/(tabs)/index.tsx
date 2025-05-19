@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 import { Memo, observer, use$, useObservable } from "@legendapp/state/react";
 
-import { CustomButton } from "~/src/components/CustomButton";
-import { InputText } from "~/src/components/InputText";
-import { MyButton } from "~/src/components/Button";
+import { CustomButton } from "~/components/CustomButton";
+import { InputText } from "~/components/InputText";
+import { MyButton } from "~/components/Button";
 import { useForm } from "@tanstack/react-form";
-import { userStore$ } from "~/src/stores/userStore";
+import { userStore$ } from "~/stores/userStore";
 
 // TODO: Start bringing the component over from Zulu
 export default function HomeScreen() {

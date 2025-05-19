@@ -1,7 +1,7 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { use$ } from '@legendapp/state/react';
-import { Tabs } from 'expo-router';
-import { userStore$ } from '~/src/stores/userStore';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { use$ } from "@legendapp/state/react";
+import { Tabs } from "expo-router";
+import { userStore$ } from "~/stores/userStore";
 
 export default function TabLayout() {
   // Check if user is logged in
@@ -12,11 +12,11 @@ export default function TabLayout() {
   // }
   // Yes?  render tabs
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: "Home",
           // @ts-ignore
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="home" color={color} />
@@ -26,7 +26,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="split-time"
         options={{
-          title: 'Split Time',
+          title: "Split Time",
           // @ts-ignore
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="pie-chart" color={color} />
@@ -36,7 +36,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: "Settings",
           // @ts-ignore
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="cog" color={color} />

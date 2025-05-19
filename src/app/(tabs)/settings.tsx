@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { MyButton } from '~/src/components/Button';
-import { Select } from '~/src/components/Select';
-import { SelectOption } from '~/src/components/Select/SelectOption';
+import { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { MyButton } from "~/components/Button";
+import { Select } from "~/components/Select";
+import { SelectOption } from "~/components/Select/SelectOption";
 
 export default function SettingsScreen() {
   const [visible, setVisible] = useState(false);
@@ -10,7 +10,7 @@ export default function SettingsScreen() {
   return (
     <View style={styles.container}>
       <Text>Settings</Text>
-      <Select
+      {/* <Select
         visible={visible}
         handleOpen={() => setVisible(true)}
         handleClose={() => setVisible(false)}
@@ -36,7 +36,7 @@ export default function SettingsScreen() {
         >
           <Text>Delete</Text>
         </SelectOption>
-      </Select>
+      </Select> */}
     </View>
   );
 }
@@ -44,15 +44,15 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   triggerStyle: {
     height: 40,
-    backgroundColor: 'red',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    backgroundColor: "red",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     width: 100,
     paddingHorizontal: 20,
     paddingVertical: 10,
