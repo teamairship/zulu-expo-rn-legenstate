@@ -9,6 +9,7 @@ erDiagram
     PROJECT ||--|{ ACTIVITY : contains
     USER }|--|{ TIME-ENTRY : has
     TIME-ENTRY }|--|{ PROJECT : contains
+    ACTIVITY ||--|| ISSUE : may_have
 
     USER {
       uuid id pk
