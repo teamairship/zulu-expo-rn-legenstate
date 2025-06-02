@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Text } from "~/components/ui/text";
 import { TimeEntryForm } from "~/components/TimeEntryForm";
-import { userStore$ } from "~/stores/userStore";
 import { StyleSheet, View } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Card } from "~/components/ui/card";
@@ -51,9 +50,6 @@ export default function HomeScreen() {
         <Text>
           Submit day <FontAwesome size={14} name="arrow-right" />
         </Text>
-      </Button>
-      <Button onPress={() => userStore$.reset()} variant="destructive">
-        <Text>Logout</Text>
       </Button>
     </View>
   );

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { MyButton } from "~/components/Button";
-import { Select } from "~/components/Select";
-import { SelectOption } from "~/components/Select/SelectOption";
+import { StyleSheet, View } from "react-native";
+import { Button } from "~/components/ui/button";
+import { Text } from "~/components/ui/text";
+import { userStore$ } from "~/stores/userStore";
 
 export default function SettingsScreen() {
   const [visible, setVisible] = useState(false);
@@ -10,33 +10,9 @@ export default function SettingsScreen() {
   return (
     <View style={styles.container}>
       <Text>Settings</Text>
-      {/* <Select
-        visible={visible}
-        handleOpen={() => setVisible(true)}
-        handleClose={() => setVisible(false)}
-        title="Project"
-        trigger={
-          // <MyButton>Hello</MyButton>
-          <View style={styles.triggerStyle}>
-            <Text>Actions</Text>
-          </View>
-        }
-      >
-        <SelectOption
-          onSelect={() => {
-            setVisible(false);
-          }}
-        >
-          <Text>View Details</Text>
-        </SelectOption>
-        <SelectOption
-          onSelect={() => {
-            setVisible(false);
-          }}
-        >
-          <Text>Delete</Text>
-        </SelectOption>
-      </Select> */}
+      <Button onPress={() => userStore$.reset()} variant="destructive">
+        <Text>Logout</Text>
+      </Button>
     </View>
   );
 }
