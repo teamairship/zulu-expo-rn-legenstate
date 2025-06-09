@@ -15,8 +15,8 @@ export interface UserStore {
 }
 
 const initialUser = {
-  redmineKey: '',
-  name: '',
+  redmineKey: '12345',
+  name: 'Test User',
 };
 
 export const userStore$ = observable<UserStore>({

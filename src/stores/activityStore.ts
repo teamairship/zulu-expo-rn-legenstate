@@ -1,4 +1,4 @@
-import { observable } from '@legendapp/state';
+import { Observable, observable } from '@legendapp/state';
 import { syncObservable } from '@legendapp/state/sync';
 import { ObservablePersistLocalStorage } from '@legendapp/state/persist-plugins/local-storage';
 
@@ -16,10 +16,32 @@ export interface ActivityStore {
   }: Pick<Activity, 'name' | 'project_key'>) => void;
   updateActivity: (activty: Activity) => void;
   deleteActivity: ({ id }: Pick<Activity, 'id'>) => void;
+
 }
 
 export const activityStore$ = observable<ActivityStore>({
-  activities: [],
+  activities: [
+    {
+      id: '345sdf',
+      name: 'Activity 1',
+      project_key: '123',
+    },
+    {
+      id: '334653',
+      name: 'Activity 2',
+      project_key: '123',
+    },
+    {
+      id: '2345345',
+      name: 'Activity 3',
+      project_key: '234',
+    },
+    {
+      id: '2dsfg',
+      name: 'Activity 4',
+      project_key: '234',
+    },
+  ],
   addActivity: ({ name, project_key }) => {
     const activity: Activity = {
       id: crypto.randomUUID(),

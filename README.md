@@ -48,5 +48,19 @@ erDiagram
 # FLOW
 
 ```mermaid
-
+graph LR
+    A[Click ] --> B[Is it raining?]
+    B -- Yes --> C[Take umbrella]
+    B -- No --> D[Go outside without umbrella]
+    C --> E[Reach destination]
+    D --> E[Reach destination]
 ```
+
+## Timer
+
+1. Click start timer
+2. Set `start_time` to current timestamp
+3. In UI compare the start time to the current time and add elapsed time
+4. Click Stop timer
+5. Calculate and save the `hours` columns.
+6. Set start time to null

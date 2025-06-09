@@ -15,7 +15,16 @@ export interface ProjectStore {
 }
 
 export const projectStore$ = observable<ProjectStore>({
-  projects: [],
+  projects: [
+    {
+      id: '123',
+      name: 'Project 1',
+    },
+    {
+      id: '234',
+      name: 'Project 2',
+    },
+  ],
   addProject: ({ name }) => {
     const project: Project = {
       id: crypto.randomUUID(),
