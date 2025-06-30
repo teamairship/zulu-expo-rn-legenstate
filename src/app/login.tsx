@@ -1,15 +1,17 @@
-import { use$ } from '@legendapp/state/react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import { userStore$ } from '../stores/userStore';
-import { InputText } from '../components/InputText';
-import { useForm } from '@tanstack/react-form';
+import { use$ } from "@legendapp/state/react";
+import { View, StyleSheet } from "react-native";
+import { userStore$ } from "../stores/userStore";
+import { InputText } from "../components/InputText";
+import { useForm } from "@tanstack/react-form";
+import { Button } from "~/components/ui/button";
+import { Text } from "~/components/ui/text";
 
 export default function LoginScreen() {
   const setUser = use$(userStore$.setUser);
   const form = useForm({
     defaultValues: {
-      name: '',
-      redmineKey: '',
+      name: "",
+      redmineKey: "",
     },
     onSubmit: async ({ value }) => {
       // Do something with form data
@@ -38,7 +40,7 @@ export default function LoginScreen() {
                 name={field.name}
               />
               {field.state.meta.errors ? (
-                <Text>{field.state.meta.errors.join(', ')}</Text>
+                <Text>{field.state.meta.errors.join(", ")}</Text>
               ) : null}
             </>
           )}
@@ -53,7 +55,7 @@ export default function LoginScreen() {
                 name={field.name}
               />
               {field.state.meta.errors ? (
-                <Text>{field.state.meta.errors.join(', ')}</Text>
+                <Text>{field.state.meta.errors.join(", ")}</Text>
               ) : null}
             </>
           )}
@@ -61,11 +63,9 @@ export default function LoginScreen() {
         <form.Subscribe
           selector={(state) => [state.canSubmit, state.isSubmitting]}
           children={([canSubmit, isSubmitting]) => (
-            <Button
-              disabled={!canSubmit}
-              onPress={form.handleSubmit}
-              title={isSubmitting ? '...' : 'Submit'}
-            />
+            <Button disabled={!canSubmit} onPress={form.handleSubmit}>
+              <Text>{isSubmitting ? "..." : "Submit"}</Text>
+            </Button>
           )}
         />
       </form>
@@ -76,7 +76,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Text } from "~/components/ui/text";
-import { TimeEntryForm } from "~/components/TimeEntryForm";
+import TimeEntryForm from "~/components/TimeEntryForm";
 import { StyleSheet, View } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Card } from "~/components/ui/card";

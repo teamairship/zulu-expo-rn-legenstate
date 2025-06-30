@@ -23,22 +23,22 @@ export const activityStore$ = observable<ActivityStore>({
   activities: [
     {
       id: '345sdf',
-      name: 'Activity 1',
+      name: 'Activity 1 for Project 1',
       project_key: '123',
     },
     {
       id: '334653',
-      name: 'Activity 2',
+      name: 'Activity 2 for Project 1',
       project_key: '123',
     },
     {
       id: '2345345',
-      name: 'Activity 3',
+      name: 'Activity 3 for Project 2',
       project_key: '234',
     },
     {
       id: '2dsfg',
-      name: 'Activity 4',
+      name: 'Activity 4 for Project 2',
       project_key: '234',
     },
   ],

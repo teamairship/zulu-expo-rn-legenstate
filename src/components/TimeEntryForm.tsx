@@ -11,21 +11,14 @@ import {
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { projectStore$ } from "~/stores/projectStore";
-import { Memo, use$, useObservable } from "@legendapp/state/react";
+import { Memo, observer, use$, useObservable } from "@legendapp/state/react";
 import { observable, observe } from "@legendapp/state";
 import { activityStore$ } from "~/stores/activityStore";
-
-const formState$ = observable({
-  projectId: "",
-  activityId: "",
-  // Computed observables with just a function
-  // isDark: () => settings$.theme.get() === 'dark'
-});
 
 interface Props {
   onClose: () => void;
 }
-export const TimeEntryForm = ({ onClose }: Props) => {
+const TimeEntryForm = ({ onClose }: Props) => {
   const insets = useSafeAreaInsets();
   const projects = use$(projectStore$.projects);
   const activities = use$(activityStore$.activities);
@@ -52,9 +45,10 @@ export const TimeEntryForm = ({ onClose }: Props) => {
     <View className="bg-gray-100 w-full rounded-2xl p-6">
       <Text>TimeEntryForm</Text>
       <Select
-        onValueChange={(option) =>
-          option && formState$.projectId.set(option.value)
-        }
+        onValueChange={(option) => {
+          option && formState$.projectId.set(option.value);
+          option && formState$.activityId.set("");
+        }}
       >
         <SelectTrigger className="w-[250px]">
           <SelectValue
@@ -75,6 +69,7 @@ export const TimeEntryForm = ({ onClose }: Props) => {
 
       <Select
         disabled={formState$.projectId.get().length > 0}
+        value={{ value: formState$.activityId.get(), label: "" }}
         onValueChange={(option) =>
           option && formState$.activityId.set(option.value)
         }
@@ -109,3 +104,5 @@ export const TimeEntryForm = ({ onClose }: Props) => {
     </View>
   );
 };
+
+export default observer(TimeEntryForm);
