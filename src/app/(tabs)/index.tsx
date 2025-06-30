@@ -5,6 +5,7 @@ import TimeEntryForm from "~/components/TimeEntryForm";
 import { StyleSheet, View } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Card } from "~/components/ui/card";
+import TimeEntryList from "~/components/TimeEntryList";
 // TODO: Start bringing the component over from Zulu
 export default function HomeScreen() {
   const [showTimeEntryForm, setShowTimeEntryForm] = useState(false);
@@ -33,7 +34,7 @@ export default function HomeScreen() {
           </View>
         )}
       </View>
-      <Text className="text-primary-500">Time Entries</Text>
+      <TimeEntryList />
       <View>
         <Card className="p-2">
           <Text>Total Hours: 40</Text>

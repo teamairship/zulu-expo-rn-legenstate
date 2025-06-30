@@ -12,8 +12,9 @@ import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { projectStore$ } from "~/stores/projectStore";
 import { Memo, observer, use$, useObservable } from "@legendapp/state/react";
-import { observable, observe } from "@legendapp/state";
+import { observable } from "@legendapp/state";
 import { activityStore$ } from "~/stores/activityStore";
+import { timeEntryStore$ } from "~/stores/timeEntryStore";
 
 interface Props {
   onClose: () => void;
@@ -22,6 +23,7 @@ const TimeEntryForm = ({ onClose }: Props) => {
   const insets = useSafeAreaInsets();
   const projects = use$(projectStore$.projects);
   const activities = use$(activityStore$.activities);
+  // const timeEntries = use$(timeEntryStore$.)
 
   const formState$ = useObservable({
     projectId: "",
@@ -40,6 +42,19 @@ const TimeEntryForm = ({ onClose }: Props) => {
     left: 12,
     right: 12,
   };
+
+  function handleSubmit() {
+    timeEntryStore$.addTimeEntry({
+      activity_id: formState$.activityId.get(),
+      hours: 0,
+      note: "blah",
+      project_id: formState$.projectId.get(),
+      // TODO: Get later
+      redmine_key: "1234",
+      start_time: new Date(),
+    });
+    onClose();
+  }
 
   return (
     <View className="bg-gray-100 w-full rounded-2xl p-6">
@@ -98,7 +113,7 @@ const TimeEntryForm = ({ onClose }: Props) => {
       <Button variant="ghost" onPress={onClose}>
         <Text>Cancel</Text>
       </Button>
-      <Button onPress={onClose}>
+      <Button onPress={handleSubmit}>
         <Text>Start Timer</Text>
       </Button>
     </View>
