@@ -4,10 +4,24 @@ import { Text } from "./ui/text";
 import { timeEntryStore$ } from "~/stores/timeEntryStore";
 import { observer, use$ } from "@legendapp/state/react";
 import { activityStore$ } from "~/stores/activityStore";
+import { useState, useEffect } from "react";
 
 const TimeEntryList = () => {
   const timeEntries = use$(timeEntryStore$.timeEntries);
   const activities = use$(activityStore$.activities);
+
+  // Local state to force re-render every second
+  const [tick, setTick] = useState(0);
+
+  // Set up an interval to update the UI every second
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTick((prev) => prev + 1); // Trigger re-render
+    }, 1000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <View>
