@@ -36,10 +36,19 @@ const TimeEntryList = () => {
                 entry.activity_id}
             </Text>
             <Text>
-              {Math.round(
-                (Date.now() - new Date(entry.start_time).getTime()) / 1000
-              ).toString()}{" "}
-              seconds
+              {(() => {
+                const now = new Date();
+                const startTime = new Date(entry.start_time);
+                const diff = now.getTime() - startTime.getTime();
+                const hours = Math.floor(diff / (60 * 60 * 1000));
+                const minutes = Math.floor(
+                  (diff % (60 * 60 * 1000)) / (60 * 1000)
+                );
+                const seconds = Math.floor((diff % (60 * 1000)) / 1000);
+                return `${hours.toString().padStart(2, "0")}:${minutes
+                  .toString()
+                  .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+              })()}
             </Text>
           </Card>
         ))
